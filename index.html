@@ -13,7 +13,7 @@
     <meta property="og:site_name" content="filters" />
     <script type="application/ld+json">
      {"name":"filters","description":null,"author":null,"@type":"WebSite","url":"https://edisonreklamebyraa.github.io/filters/","image":null,"publisher":null,"headline":"Welcome to GitHub Pages","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
-    <!-- End Jekyll SEO tag -->
+
 
     <link rel="stylesheet" href="/filters/assets/css/style.css?v=ccb8658b24fbda7ba6e3dfd77d2c4d5bbb656564">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -25,53 +25,85 @@
       <link rel="stylesheet" href="/filters/assets/css/ie.css">
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        .filter_1{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            pointer-events: none;
+            display: none;
+        }
+        .filter_1.show{
+            display: block;
+        }
 
+        .blur{
+            filter: grayscale(100%) blur(2px);
+        }
+
+    </style>
   </head>
-  <body>
-    <div id="header">
-      <nav>
-        <li class="fork"><a href="https://github.com/EdisonReklamebyraa/filters">View On GitHub</a></li>
-        
-      </nav>
-    </div><!-- end header -->
+  <body class="filter-blur">
+      <div class="filter_1">
+      </div>
 
-    <div class="wrapper">
+      <div id="header">
+          <nav>
+              <li class="fork"><a href="https://github.com/EdisonReklamebyraa/filters">View On GitHub</a></li>
+          </nav>
+      </div>
 
-      <section>
-        
+      <div class="wrapper">
 
-        <h2 id="welcome-to-github-pages">Filter demo</h2>
+          <section>
 
-        <p>You can use the <a href="https://github.com/EdisonReklamebyraa/filters/edit/master/index.md">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
 
-        <p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
+              <h2 id="welcome-to-github-pages">Filter demo</h2>
 
-        <h3 id="markdown">Markdown</h3>
+              <p>You can use the <a href="https://github.com/EdisonReklamebyraa/filters/edit/master/index.md">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
 
-        <p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
+              <p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
 
-        <p>```markdown
-          Syntax highlighted code block</p>
+              <h3 id="markdown">Markdown</h3>
 
-        <h1 id="header-1">Filter 1</h1>
-        <h2 id="header-2">Filter 2</h2>
+              <p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
 
-      </section>
+              <p><img alt="Cats" src="http://lorempixel.com/400/400/cats"/></p>
 
-    </div>
+              <h1 id="Filter-1"><a href="#">Filter 1</a></h1>
+              <h2 id="Filter-2"><a href="#">Filter 2</a></h2>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-     (function($){
-       $(document).mousemove(
-         function(e){
-           var X = e.pageX;
-           var Y = e.pageY;
-           $('body').css('background','radial-gradient(circle at '+X+'px '+Y+'px, rgba(0,0,0,0) -10%, #121, #000 40%)');
-         }
-       );
-     })(jQuery);
-    </script>
+          </section>
+
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script>
+          (function($){
+              $("#Filter-1").click(function(e){
+                  e.preventDefault();
+                  $(".filter_1").toggleClass("show");
+                  $(".filter-blur").removeClass("blur");
+              });
+              $("#Filter-2").click(function(e){
+                  e.preventDefault();
+                  $(".filter-blur").toggleClass("blur");
+                  $(".filter_1").removeClass("show");
+              });
+              $(document).mousemove(
+
+                  function(e){
+                      if($(".filter_1").hasClass("show")){
+                          var X = e.pageX;
+                          var Y = e.pageY;
+                          $('.filter_1').css('background','radial-gradient(circle at '+X+'px '+Y+'px, rgba(0,0,0,0) -10%, #121, #000 40%)');
+                      }
+                  }
+              );
+          })(jQuery);
+      </script>
 
   </body>
 </html>

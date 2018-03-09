@@ -35,11 +35,16 @@
             pointer-events: none;
             display: none;
             z-index: 990;
+
         }
         .filter_1.show{
             display: block;
         }
-
+        .blur_little{
+            filter: blur(1.5px);
+            position: relative;
+            min-height: 100vh;
+        }
         .blur{
             filter: grayscale(100%) blur(2px);
         }
@@ -86,10 +91,12 @@
               $("#Filter-1").click(function(e){
                   e.preventDefault();
                   $(".filter_1").toggleClass("show");
+                  $(".filter-blur").toggleClass("blur_little");
                   $(".filter-blur").removeClass("blur");
               });
               $("#Filter-2").click(function(e){
                   e.preventDefault();
+                  $(".filter-blur").removeClass("blur_little");
                   $(".filter-blur").toggleClass("blur");
                   $(".filter_1").removeClass("show");
               });
@@ -99,7 +106,7 @@
                       if($(".filter_1").hasClass("show")){
                           var X = e.pageX;
                           var Y = e.pageY;
-                          $('.filter_1').css('background','radial-gradient(circle at '+X+'px '+Y+'px, rgba(0,0,0,0) -10%, #121, #000 40%)');
+                          $('.filter_1').css('background','radial-gradient(circle at '+X+'px '+Y+'px, rgba(0,0,0,0.1) -10%, #121, rgba(0,0,0,0.9) 50%)');
                       }
                   }
               );
